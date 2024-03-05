@@ -17,9 +17,10 @@ py_binary(
     srcs = ["main.py"],
     deps = [
         requirement("functions-framework"),
+        requirement("google-cloud-aiplatform"),
         requirement("twilio"),
     ],
-    data = [":requirements"],
+    data = [":requirements", "params.json"],
 )
 
 sh_binary(
@@ -39,6 +40,6 @@ sh_binary(
     ],
 )
 
-sh_binary(name = "run", srcs = ["run.sh"], data = [":main"])
+sh_binary(name = "run", srcs = ["run.sh"], data = [":main", "params.json"])
 
 sh_binary(name = "call", srcs = ["call.sh"], data = [":main"])

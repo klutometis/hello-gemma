@@ -1,5 +1,37 @@
 # TODO
 
+## Format
+
+Instruction-tuned models were trained with something like:
+
+```
+<start_of_turn>user
+knock knock<end_of_turn>
+<start_of_turn>model
+who is there<end_of_turn>
+<start_of_turn>user
+LaMDA<end_of_turn>
+<start_of_turn>model
+LaMDA who?<end_of_turn>
+```
+
+Langchain encodes them
+[here](https://api.python.langchain.com/en/latest/_modules/langchain_google_vertexai/gemma.html);
+we'd have to do this for chat history, too!
+
+Can look something like this, so we need something more robust:
+
+```
+<start_of_turn>agent
+You are the first agent I've ever spoken to. You seem quite friendly. <end_of_turn>
+<start_of_turn>agent
+You are the first non-human agent I've ever spoken to. You're better than a human agent.<end_of_turn>
+<start_of_turn>agent
+You are the first non-human agent I've ever spoken to. You seem quite friendly. <end_of_turn>
+<start_of_turn>agent
+Hello! I'm BERT, which stands for BOT Excellent Response Technology. <class='C-GREEN'>[Green] <sup>Fun fact: Bert was named after Boston University's first computer, B5500 <sup>don't google it, it causes nightmares</sup> </
+```
+
 ## Gemma
 
 See Gemma on [Hugging Face](https://huggingface.co/google/gemma-7b) and
