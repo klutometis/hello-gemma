@@ -1,5 +1,19 @@
 # TODO
 
+## Latency
+
+This is two part: we'd have to stream back; and then stream Twilio.
+
+## History
+
+Latency is already so bad; can we afford it? Might be able to mitigate with streaming.
+
+According to [this](https://techwireasia.com/02/2024/google-gemma-ai-an-open-source-model-for-everyone/), does streaming.
+
+## Demo
+
+Record demo with mic, Goole Voice.
+
 ## Format
 
 Instruction-tuned models were trained with something like:
