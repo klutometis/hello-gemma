@@ -46,6 +46,8 @@ You are the first non-human agent I've ever spoken to. You seem quite friendly. 
 Hello! I'm BERT, which stands for BOT Excellent Response Technology. <class='C-GREEN'>[Green] <sup>Fun fact: Bert was named after Boston University's first computer, B5500 <sup>don't google it, it causes nightmares</sup> </
 ```
 
+Parse with e.g. [lark](https://lark-parser.readthedocs.io/en/stable/json_tutorial.html); or overkill?
+
 ## Gemma
 
 See Gemma on [Hugging Face](https://huggingface.co/google/gemma-7b) and
