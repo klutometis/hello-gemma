@@ -1,5 +1,11 @@
 # TODO
 
+## Custom domain
+
+Might have to go over [Cloud Run](https://cloud.google.com/run/docs/mapping-custom-domains); see [here](https://issuetracker.google.com/issues/36155827#comment45):
+
+> One solution could be to upgrade your function to v2 and attach the domain to your Cloud Run instance: https://cloud.google.com/run/docs/mapping-custom-domains
+
 ## Latency
 
 This is two part: we'd have to stream back; and then stream Twilio.
