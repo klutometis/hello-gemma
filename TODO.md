@@ -6,6 +6,33 @@ Might have to go over [Cloud Run](https://cloud.google.com/run/docs/mapping-cust
 
 > One solution could be to upgrade your function to v2 and attach the domain to your Cloud Run instance: https://cloud.google.com/run/docs/mapping-custom-domains
 
+## Streaming
+
+See [streaming Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/streaming); which uses this [`TextGenerationModel`](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/streaming#sdk) abstraction, though: can `TextGenerationModel` be used with arbitrary endpoints?
+
+Can [`from_pretrained`](https://cloud.google.com/python/docs/reference/aiplatform/latest/vertexai.language_models.TextGenerationModel#vertexai_language_models_TextGenerationModel_from_pretrained) be used with our endpoint?
+
+Oh, [this](https://github.com/google-deepmind/dramatron/blob/58339443e7fbaec21fe5f5e246266f1e8b1d7ee4/colab/dramatron.ipynb#L2396) is interesting:
+
+```Python
+    if 'bison' in self._model:
+      self._client = TextGenerationModel.from_pretrained(model)
+    elif 'gemini' in self._model:
+      self._client = genai.GenerativeModel(model)
+```
+
+Wait, PHP has [`streamingPredict`](https://cloud.google.com/php/docs/reference/cloud-ai-platform/latest/V1.Client.PredictionServiceClient#_Google_Cloud_AIPlatform_V1_Client_PredictionServiceClient__streamingPredict__); what about Python?
+
+Hilarious: Python only has [`predict`](https://cloud.google.com/python/docs/reference/automl/latest/google.cloud.automl_v1beta1.services.prediction_service.PredictionServiceClient#google_cloud_automl_v1beta1_services_prediction_service_PredictionServiceClient_predict); doesn't stream?
+
+[`streaming_predict`](https://github.com/googleapis/python-aiplatform/blob/f294ba8b762a88b77a623b86145302c976fdabc4/google/cloud/aiplatform_v1/services/prediction_service/client.py#L1561) is in the code but undocumented?
+
+There's also [`generate_content`](https://github.com/googleapis/python-aiplatform/blob/f294ba8b762a88b77a623b86145302c976fdabc4/google/cloud/aiplatform_v1/services/prediction_service/client.py#L2002) and [`stream_generate_content`](https://github.com/googleapis/python-aiplatform/blob/f294ba8b762a88b77a623b86145302c976fdabc4/google/cloud/aiplatform_v1/services/prediction_service/client.py#L2127); which are higher level: uses [`GenerateContentRequest`](https://github.com/googleapis/googleapis/blob/792dacbd24643d8650fbf705b3f745532012ea34/google/ai/generativelanguage/v1/generative_service.proto#L111) and [`Content`](https://github.com/googleapis/googleapis/blob/792dacbd24643d8650fbf705b3f745532012ea34/google/cloud/aiplatform/v1/content.proto#L55 "https://github.com/googleapis/googleapis/blob/792dacbd24643d8650fbf705b3f745532012ea34/google/cloud/aiplatform/v1/content.proto#L55") with roles.
+
+The [`GenerateContentResponse`](https://github.com/googleapis/python-aiplatform/blob/f294ba8b762a88b77a623b86145302c976fdabc4/google/cloud/aiplatform_v1/types/prediction_service.py#L796) has [`Candidate`](https://github.com/googleapis/python-aiplatform/blob/f294ba8b762a88b77a623b86145302c976fdabc4/google/cloud/aiplatform_v1/types/content.py#L479) with `Content` (roles, etc.).
+
+Saves having to parse? Or do we have to define these things for Gemma?
+
 ## Latency
 
 This is two part: we'd have to stream back; and then stream Twilio.
@@ -53,6 +80,12 @@ Hello! I'm BERT, which stands for BOT Excellent Response Technology. <class='C-G
 ```
 
 Parse with e.g. [lark](https://lark-parser.readthedocs.io/en/stable/json_tutorial.html); or overkill?
+
+See [here](https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/ai-services/openai/includes/chat-markup-language.md#working-with-chat-markup-language-chatml) for Microsoft's explanation of ChatML; and [Hacker news](https://news.ycombinator.com/item?id=34988748); is wrapped by [chat completions](https://platform.openai.com/docs/guides/text-generation/chat-completions-api).
+
+[Output parser](https://www.reddit.com/r/LangChain/comments/166jxzi/output_parser_for_openai_chat_models/) 404s; ah, see [output parsers](https://python.langchain.com/docs/modules/model_io/output_parsers/).
+
+Parser / generators embedded in the various Google / OpenAI libraries; does it make sense to write a general library; or it's wedded to the individual models?
 
 ## Gemma
 
