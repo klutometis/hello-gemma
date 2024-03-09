@@ -1,5 +1,9 @@
 # TODO
 
+## Finetuning
+
+See [finetuning on Vertex](https://github.com/GoogleCloudPlatform/vertex-ai-samples/blob/main/notebooks/community/model_garden/model_garden_gemma_finetuning_on_vertex.ipynb).
+
 ## Custom domain
 
 Might have to go over [Cloud Run](https://cloud.google.com/run/docs/mapping-custom-domains); see [here](https://issuetracker.google.com/issues/36155827#comment45):
