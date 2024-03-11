@@ -1,5 +1,10 @@
 # TODO
 
+## Demo
+
+2b for triage; 7b for constrained final answer; see if we can tune. Both in
+Discord.
+
 ## Finetuning
 
 See
