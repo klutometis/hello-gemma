@@ -1,5 +1,54 @@
 # TODO
 
+## 2b
+
+See [formatting](https://ai.google.dev/gemma/docs/formatting).
+
+```json
+{
+  "instances": [
+    {
+      "prompt": "<start_of_turn>user\nYou're a nurse whose job is to triage patients into one of the specialties: Internal Medicine, Pediatrics, Orthopedics, Cardiology, Neurology. Answer with the specialty only.<end_of_turn>\n<start_of_turn>model\nok</end_of_turn>\n<start_of_turn>user\nMy tummy hurts <end_of_turn>\n<start_of_turn>model\nInternal Medicine<end_of_turn>\n<start_of_turn>user\nMy heart aches<end_of_turn>\n<start_of_turn>model"
+    }
+  ]
+}
+```
+
+Gets:
+
+```json
+{
+  "predictions": [
+    "Prompt:\n<start_of_turn>user\nYou're a nurse whose job is to triage patients into one of the specialties: Internal Medicine, Pediatrics, Orthopedics, Cardiology, Neurology. Answer with the specialty only.<end_of_turn>\n<start_of_turn>model\nok</end_of_turn>\n<start_of_turn>user\nMy tummy hurts <end_of_turn>\n<start_of_turn>model\nInternal Medicine<end_of_turn>\n<start_of_turn>user\nMy heart aches<end_of_turn>\n<start_of_turn>model\nOutput:\nCardiology<end_of_turn>\n<start_of_"
+  ]
+}
+```
+
+And see if the 7b can do a reasonable job at final response synthesis. Just
+naïve regex; failing that, truncate response.
+
+7b:
+
+```json
+{
+  "instances": [
+    {
+      "prompt": "<start_of_turn>user\nYou're a hospital receptionist whose job is to guide patients with certain symtoms to a specialist. Can you guide them with a flawless bedside manner?<end_of_turn>\n<start_of_turn>model\nok</end_of_turn>\n<start_of_turn>user\nSymptoms: My tummy hurts\nSpecialist: Internal Medicine<end_of_turn>\n<start_of_turn>model\nI hear your tummy aches! Sorry to hear that. Let me get you to internal medicine.<end_of_turn>\n<start_of_turn>user\nSymptoms: My heart aches\nSpecialty: Cardiology<end_of_turn>\n<start_of_turn>model"
+    }
+  ]
+}
+```
+
+gets:
+
+```json
+{
+  "predictions": [
+    "Prompt:\n<start_of_turn>user\nYou're a hospital receptionist whose job is to guide patients with certain symtoms to a specialist. Can you guide them with a flawless bedside manner?<end_of_turn>\n<start_of_turn>model\nok</end_of_turn>\n<start_of_turn>user\nSymptoms: My tummy hurts\nSpecialist: Internal Medicine<end_of_turn>\n<start_of_turn>model\nI hear your tummy aches! Sorry to hear that. Let me get you to internal medicine.<end_of_turn>\n<start_of_turn>user\nSymptoms: My heart aches\nSpecialty: Cardiology<end_of_turn>\n<start_of_turn>model\nOutput:\nYour heart feels lousy, huh? You'd probably benefit from seeing a"
+  ]
+}
+```
+
 ## Demo
 
 2b for triage; 7b for constrained final answer; see if we can tune. Both in
