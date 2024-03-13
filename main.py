@@ -53,27 +53,27 @@ def generate(prompt):
         CARDIOLOGY = "Cardiology"
         NEUROLOGY = "Neurology"
 
-    parser = EnumOutputParser(enum=Specialties)
+    specialties = EnumOutputParser(enum=Specialties)
 
     conversation = ChatPromptTemplate.from_messages(
         [
             HumanMessagePromptTemplate.from_template(
                 "You're a nurse whose job is to triage patients into one"
-                " of the specialties. {instructions}"
+                " of the specialties. {specialties}"
             ),
             AIMessage("Ok!"),
             HumanMessage("My tummy hurts", example=True),
             AIMessage("Internal Medicine", example=True),
             HumanMessagePromptTemplate.from_template("{prompt}"),
         ]
-    ).partial(instructions=parser.get_format_instructions())
+    ).partial(specialties=specialties.get_format_instructions())
 
     chain = (
         {"prompt": RunnablePassthrough()}
         | conversation
         | get_model()
         | parse_gemma
-        | parser
+        | specialties
     )
 
     return chain.invoke(prompt).value
