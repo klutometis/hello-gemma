@@ -33,14 +33,6 @@ def say(text):
     return Say(text, voice="Google.en-US-Neural2-H")
 
 
-class Specialties(Enum):
-    INTERNAL_MEDICINE = "Internal Medicine"
-    PEDIATRICS = "Pediatrics"
-    ORTHOPEDICS = "Orthopedics"
-    CARDIOLOGY = "Cardiology"
-    NEUROLOGY = "Neurology"
-
-
 # TODO(danenberg): Doesn't stream;* but should? Only needed for
 # smallish responses from baby model for now; let's punt.
 #
@@ -54,6 +46,13 @@ def parse_gemma(ai_message: AIMessage) -> str:
 
 
 def generate(prompt):
+    class Specialties(Enum):
+        INTERNAL_MEDICINE = "Internal Medicine"
+        PEDIATRICS = "Pediatrics"
+        ORTHOPEDICS = "Orthopedics"
+        CARDIOLOGY = "Cardiology"
+        NEUROLOGY = "Neurology"
+
     parser = EnumOutputParser(enum=Specialties)
 
     conversation = ChatPromptTemplate.from_messages(
