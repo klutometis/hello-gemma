@@ -1,20 +1,17 @@
-from enum import Enum
-from http import HTTPStatus
+import functools
 import json
 import logging
-import functools
+from enum import Enum
+from http import HTTPStatus
 
 import functions_framework
-from twilio.twiml.voice_response import Gather, Say, VoiceResponse
-from pyparsing import Literal, SkipTo, StringEnd
-from langchain.prompts import (
-    ChatPromptTemplate,
-    HumanMessagePromptTemplate,
-)
+from langchain.output_parsers.enum import EnumOutputParser
+from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
 from langchain.schema import AIMessage, HumanMessage
 from langchain_core.runnables import RunnablePassthrough
 from langchain_google_vertexai import GemmaChatVertexAIModelGarden
-from langchain.output_parsers.enum import EnumOutputParser
+from pyparsing import Literal, SkipTo, StringEnd
+from twilio.twiml.voice_response import Gather, Say, VoiceResponse
 
 
 @functools.lru_cache(maxsize=None)
@@ -47,7 +44,7 @@ class Specialties(Enum):
 # TODO(danenberg): Doesn't stream;* but should? Only needed for
 # smallish responses from baby model for now; let's punt.
 #
-# * https://python.langchain.com/docs/modules/model_io/output_parsers/custom#runnable-lambdas-and-generators # noqa: F501
+# * https://python.langchain.com/docs/modules/model_io/output_parsers/custom#runnable-lambdas-and-generators # noqa: 501
 def parse_gemma(ai_message: AIMessage) -> str:
     grammar = Literal("Output:\n") + SkipTo(
         "<end_of_turn>" | StringEnd()
@@ -89,7 +86,7 @@ def generate(prompt):
 #
 # In this case, we'll prime the memoization at cold-start.
 #
-# * https://cloud.google.com/functions/docs/bestpractices/tips#use_global_variables_to_reuse_objects_in_future_invocations # noqa: F501
+# * https://cloud.google.com/functions/docs/bestpractices/tips#use_global_variables_to_reuse_objects_in_future_invocations # noqa: 501
 model = get_model()
 
 
