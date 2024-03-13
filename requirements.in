@@ -1,3 +1,7 @@
 functions-framework
 google-cloud-aiplatform
+langchain
+langchain-core
+langchain-google-vertexai
+pyparsing
 twilio

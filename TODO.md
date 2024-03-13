@@ -1,5 +1,96 @@
 # TODO
 
+## API gateway
+
+See [here](https://cloud.google.com/api-gateway); mechanism to use domains with
+cloud functions?
+
+See specifically
+[here](https://cloud.google.com/api-gateway/docs/using-custom-domains); pain,
+though, to add new forwarding endpoints; extra steps required than rather just
+code?
+
+Using
+[load balancing](https://cloud.google.com/api-gateway/docs/gateway-load-balancing);
+which is also [generic](https://cloud.google.com/load-balancing/docs/https);
+even mentions cloud functions?
+
+## Demo with audio
+
+Call with Meet; webcam; cut for latency?
+
+## Langchain
+
+Can use
+[`GOOGLE_APPLICATION_CREDENTIALS`](https://python.langchain.com/docs/integrations/llms/google_vertex_ai_palm#setup);
+better than `gcloud auth`? Oh, only service accounts.
+
+Works with
+[Model Garden](https://python.langchain.com/docs/integrations/llms/google_vertex_ai_palm#vertex-model-garden).
+
+[Chains with chat models](https://medium.com/@princekrampah/langchain-building-language-model-applications-c54cfe7219cb#397e)
+is a reasonable example?
+
+Better to do it like
+[this](https://api.python.langchain.com/en/latest/prompts/langchain_core.prompts.chat.ChatPromptTemplate.html):
+
+```python
+from langchain_core.prompts import ChatPromptTemplate
+
+template = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful AI bot. Your name is {name}."),
+    ("human", "Hello, how are you doing?"),
+    ("ai", "I'm doing well, thanks!"),
+    ("human", "{user_input}"),
+])
+
+messages = template.format_messages(
+    name="Bob",
+    user_input="What is your name?"
+)
+```
+
+or
+[this](https://medium.com/@princekrampah/langchain-building-language-model-applications-c54cfe7219cb#397e)?
+
+```python
+prompt = ChatPromptTemplate.from_messages([
+    SystemMessagePromptTemplate.from_template(
+        "Your name is hilda, you are a historian, very talkative and smart "
+        "Answer the questions you are being asked and have a sense of humour "
+        "You should be kind and polite in your responses"
+    ),
+    MessagesPlaceholder(variable_name="history"),
+    HumanMessagePromptTemplate.from_template("{input}")
+])
+
+conversation = ConversationChain(memory=memory, prompt=prompt, llm=llm)
+
+conversation.predict(input="Hi there!")
+```
+
+See
+[completion instead of chat](https://python.langchain.com/docs/expression_language/why#llm-instead-of-chat-model)
+and
+[passing data through](https://python.langchain.com/docs/expression_language/how_to/passthrough)
+(for terminal `<start_of_turn>model` continuation).
+
+`RunnablePassthrough()` creates the continuation; passed as terminal
+`AIMessage`?
+
+See e.g.:
+
+```python
+retrieval_chain = (
+    {"context": retriever, "question": RunnablePassthrough()}
+    | prompt
+    | model
+    | StrOutputParser()
+)
+
+retrieval_chain.invoke("where did harrison work?")
+```
+
 ## 2b
 
 See [formatting](https://ai.google.dev/gemma/docs/formatting).

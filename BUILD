@@ -4,7 +4,7 @@ load("@rules_python//python:py_binary.bzl", "py_binary")
 
 # NB: Regenaret `requirements.txt` with:
 #
-#   bazel run :requirpments.update
+#   bazel run :requirements.update
 #
 compile_pip_requirements(
     name = "requirements",
@@ -18,6 +18,8 @@ py_binary(
     deps = [
         requirement("functions-framework"),
         requirement("google-cloud-aiplatform"),
+        requirement("langchain-google-vertexai"),
+        requirement("pyparsing"),
         requirement("twilio"),
     ],
     data = [":requirements", "params.json"],
@@ -38,6 +40,18 @@ sh_binary(
     data = [
         "@shflags//:shflags",
     ],
+)
+
+sh_library(name = "venv", srcs = ["venv.sh"])
+
+sh_test(
+    name = "lint",
+    srcs = ["lint.sh"],
+    data = [
+        ":venv",
+        ":main",
+    ],
+    tags = ["local"],
 )
 
 sh_binary(name = "run", srcs = ["run.sh"], data = [":main", "params.json"])

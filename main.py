@@ -1,118 +1,123 @@
+from enum import Enum
 from http import HTTPStatus
 import json
 import logging
-import re
+import functools
 
 import functions_framework
-from google.cloud import aiplatform
-from google.cloud import aiplatform_v1
 from twilio.twiml.voice_response import Gather, Say, VoiceResponse
+from pyparsing import Literal, SkipTo, StringEnd
+from langchain.prompts import (
+    ChatPromptTemplate,
+    HumanMessagePromptTemplate,
+)
+from langchain.schema import AIMessage, HumanMessage
+from langchain_core.runnables import RunnablePassthrough
+from langchain_google_vertexai import GemmaChatVertexAIModelGarden
+from langchain.output_parsers.enum import EnumOutputParser
+
+
+@functools.lru_cache(maxsize=None)
+def get_model() -> GemmaChatVertexAIModelGarden:
+    return GemmaChatVertexAIModelGarden(
+        project=get_param("project"),
+        location=get_param("location"),
+        endpoint_id=get_param("endpoint"),
+        parse_response=True,
+    )
 
 
 def get_param(key: str) -> str:
-  with open("params.json", "r") as file:
-    return json.load(file)[key]
+    with open("params.json", "r") as file:
+        return json.load(file)[key]
 
 
 def say(text):
-  return Say(text, voice="Google.en-US-Neural2-H")
+    return Say(text, voice="Google.en-US-Neural2-H")
+
+
+class Specialties(Enum):
+    INTERNAL_MEDICINE = "Internal Medicine"
+    PEDIATRICS = "Pediatrics"
+    ORTHOPEDICS = "Orthopedics"
+    CARDIOLOGY = "Cardiology"
+    NEUROLOGY = "Neurology"
+
+
+# TODO(danenberg): Doesn't stream;* but should? Only needed for
+# smallish responses from baby model for now; let's punt.
+#
+# * https://python.langchain.com/docs/modules/model_io/output_parsers/custom#runnable-lambdas-and-generators # noqa: F501
+def parse_gemma(ai_message: AIMessage) -> str:
+    grammar = Literal("Output:\n") + SkipTo(
+        "<end_of_turn>" | StringEnd()
+    ).setResultsName("output")
+
+    return grammar.parseString(ai_message.content)["output"]
 
 
 def generate(prompt):
-  PROMPT = """<start_of_turn>user
-You're a nurse whose job is to triage patients into one of the specialties: Internal Medicine, Pediatrics, Orthopedics, Cardiology, Neurology. Answer with the specialty only.<end_of_turn>
-<start_of_turn>model
-ok</end_of_turn>
-<start_of_turn>user
-My tummy hurts<end_of_turn>
-<start_of_turn>model
-Internal Medicine<end_of_turn>
-<start_of_turn>user
-{prompt}<end_of_turn>
-<start_of_turn>model"""
+    parser = EnumOutputParser(enum=Specialties)
 
-  # Initialize the Vertex AI client
-  client_options = {
-      "api_endpoint": f"{get_param('location')}-aiplatform.googleapis.com"
-  }
-  client = aiplatform_v1.PredictionServiceClient(client_options=client_options)
+    conversation = ChatPromptTemplate.from_messages(
+        [
+            HumanMessagePromptTemplate.from_template(
+                "You're a nurse whose job is to triage patients into one"
+                " of the specialties. {instructions}"
+            ),
+            AIMessage("Ok!"),
+            HumanMessage("My tummy hurts", example=True),
+            AIMessage("Internal Medicine", example=True),
+            HumanMessagePromptTemplate.from_template("{prompt}"),
+        ]
+    ).partial(instructions=parser.get_format_instructions())
 
-  # Construct the full path of the endpoint
-  endpoint = client.endpoint_path(
-      project=get_param("project"),
-      location=get_param("location"),
-      endpoint=get_param("endpoint"),
-  )
+    chain = (
+        {"prompt": RunnablePassthrough()}
+        | conversation
+        | get_model()
+        | parse_gemma
+        | parser
+    )
 
-  # Prepare your input for the model
-  instances = [{
-      "prompt": PROMPT.format(prompt=prompt),
-  }]
+    return chain.invoke(prompt).value
 
-  # NB(danenberg): These parameters don't seem to have any effect.
-  parameters = {
-      "max_output_tokens": 256,
-      "temperature": 1.0,
-      "top_p": 1.0,
-      "top_k": 1.0,
-  }
 
-  request = aiplatform_v1.PredictRequest(
-      endpoint=endpoint, parameters=parameters
-  )
-
-  request.instances.extend(instances)
-
-  # Make the prediction request
-  response = client.predict(request=request)
-
-  logging.error(response)
-
-  if not response.predictions:
-    return None
-
-  prediction = response.predictions[0]
-
-  logging.info(prediction)
-
-  # TODO(danenberg): Should be able to do better than this: will truncate anything with `<`.
-  pattern = r"\n<start_of_turn>model\n([^<]*)"
-
-  match = re.search(pattern, prediction, re.DOTALL)
-
-  logging.error(match)
-
-  if match:
-    return match.group(1)  # Group 1 is the first capturing group (.*?)
-
-  return None
+# NB(danenberg): Cloud functions are stateless; so the docs recommend
+# a lazy-initialized global for capturing expensive things like
+# models, etc.*
+#
+# In this case, we'll prime the memoization at cold-start.
+#
+# * https://cloud.google.com/functions/docs/bestpractices/tips#use_global_variables_to_reuse_objects_in_future_invocations # noqa: F501
+model = get_model()
 
 
 @functions_framework.http
 def hello(request):
-  GREETING = "Hi, I'm Gemma! How can I help you today?"
-  HEADERS = {"Content-Type": "text/xml"}
+    GREETING = "Hi, I'm Gemma! How can I help you today?"
+    HEADERS = {"Content-Type": "text/xml"}
 
-  logging.error(request.form.to_dict())
+    logging.info(request.form.to_dict())
 
-  speech_result = request.form.get("SpeechResult")
+    speech_result = request.form.get("SpeechResult")
 
-  suffix = None
+    suffix = None
 
-  if speech_result:
-    suffix = generate(speech_result)
+    if speech_result:
+        suffix = generate(speech_result)
 
-  logging.error(suffix)
+    logging.info(suffix)
 
-  response = VoiceResponse()
-  gather = Gather(
-      input="speech",
-      enhanced="true",
-      speech_model="phone_call",
-      barge_in=True,
-  )
-  gather.append(say(suffix if suffix else GREETING))
-  response.append(gather)
-  response.append(say("Thanks for calling!"))
+    response = VoiceResponse()
+    gather = Gather(
+        input="speech",
+        enhanced="true",
+        speech_model="phone_call",
+        barge_in=True,
+    )
+    gather.append(say(suffix if suffix else GREETING))
+    response.append(gather)
+    response.append(say("Thanks for calling!"))
 
-  return response.to_xml(), HTTPStatus.OK, HEADERS
+    return response.to_xml(), HTTPStatus.OK, HEADERS
