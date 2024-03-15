@@ -3,30 +3,56 @@ import json
 import logging
 from enum import Enum
 from http import HTTPStatus
+from types import SimpleNamespace
 
 import functions_framework
 from langchain.output_parsers.enum import EnumOutputParser
-from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
-from langchain.schema import AIMessage, HumanMessage
-from langchain_core.runnables import RunnablePassthrough
-from langchain_google_vertexai import GemmaChatVertexAIModelGarden
+from langchain.output_parsers.fix import OutputFixingParser
+from langchain.prompts import (
+    AIMessagePromptTemplate,
+    ChatPromptTemplate,
+    FewShotChatMessagePromptTemplate,
+    HumanMessagePromptTemplate,
+    SystemMessagePromptTemplate,
+)
+from langchain.schema import AIMessage
+from langchain_core.runnables import RunnableLambda, RunnablePassthrough
+from langchain_google_vertexai import GemmaChatVertexAIModelGarden, VertexAI
 from pyparsing import Literal, SkipTo, StringEnd
 from twilio.twiml.voice_response import Gather, Say, VoiceResponse
 
 
-@functools.lru_cache(maxsize=None)
-def get_model() -> GemmaChatVertexAIModelGarden:
+@functools.cache
+def get_param(key: str) -> str:
+    with open("params.json", "r") as file:
+        return json.load(file)[key]
+
+
+@functools.cache
+def get_gemma() -> GemmaChatVertexAIModelGarden:
     return GemmaChatVertexAIModelGarden(
         project=get_param("project"),
         location=get_param("location"),
         endpoint_id=get_param("endpoint"),
         parse_response=True,
+        temperature=0,
     )
 
 
-def get_param(key: str) -> str:
-    with open("params.json", "r") as file:
-        return json.load(file)[key]
+@functools.cache
+def get_gemini() -> VertexAI:
+    return VertexAI(mode_name="gemini-1.0-pro")
+
+
+# NB(danenberg): Cloud functions are stateless; so the docs recommend
+# a lazy-initialized global for capturing expensive things like
+# models, etc.*
+#
+# In this case, we'll prime the memoization at cold-start.
+#
+# * https://cloud.google.com/functions/docs/bestpractices/tips#use_global_variables_to_reuse_objects_in_future_invocations # noqa: 501
+gemma = get_gemma()
+gemini = get_gemini()
 
 
 def say(text):
@@ -45,48 +71,88 @@ def parse_gemma(ai_message: AIMessage) -> str:
     return grammar.parseString(ai_message.content)["output"]
 
 
-def generate(prompt):
+def find_specialist(prompt):
+    global gemma
+
     class Specialties(Enum):
         INTERNAL_MEDICINE = "Internal Medicine"
         PEDIATRICS = "Pediatrics"
         ORTHOPEDICS = "Orthopedics"
         CARDIOLOGY = "Cardiology"
         NEUROLOGY = "Neurology"
+        PSYCHIATRY = "Psychiatry"
+        HOSPICE = "Hospice"
 
-    specialties = EnumOutputParser(enum=Specialties)
+    def log_weird_specialty_and_return_default(**kwargs):
+        logging.error(f"Weird specialty: {kwargs.get('completion', '∅')}")
+        return Specialties.HOSPICE.value
 
+    specialty_parser = OutputFixingParser(
+        parser=EnumOutputParser(enum=Specialties),
+        retry_chain=SimpleNamespace(
+            run=log_weird_specialty_and_return_default
+        ),
+    )
+
+    gemma_parser = RunnableLambda(parse_gemma)
+
+    example_prompt = ChatPromptTemplate.from_messages(
+        [
+            HumanMessagePromptTemplate.from_template(
+                "{symptoms}", example=True
+            ),
+            AIMessagePromptTemplate.from_template("{specialty}", example=True),
+        ]
+    )
+
+    examples = [
+        {"symptoms": "My tummy hurts", "specialty": "Internal Medicine"}
+    ]
+
+    few_shot_prompt = FewShotChatMessagePromptTemplate(
+        example_prompt=example_prompt, examples=examples
+    )
+
+    # NB(danenberg): Gemma doesn't do system prompts, only model and user.
     conversation = ChatPromptTemplate.from_messages(
         [
             HumanMessagePromptTemplate.from_template(
-                "You're a nurse whose job is to triage patients into one"
-                " of the specialties. {specialties}"
+                "You're a nurse whose job is to triage patients into "
+                "one of the specialties. {specialties}. Respond with "
+                "the specialty in one or two words at most."
             ),
             AIMessage("Ok!"),
-            HumanMessage("My tummy hurts", example=True),
-            AIMessage("Internal Medicine", example=True),
+            few_shot_prompt,
             HumanMessagePromptTemplate.from_template("{prompt}"),
         ]
-    ).partial(specialties=specialties.get_format_instructions())
+    ).partial(specialties=specialty_parser.get_format_instructions())
 
     chain = (
         {"prompt": RunnablePassthrough()}
         | conversation
-        | get_model()
-        | parse_gemma
-        | specialties
+        | gemma
+        | gemma_parser
+        | specialty_parser
     )
 
     return chain.invoke(prompt).value
 
 
-# NB(danenberg): Cloud functions are stateless; so the docs recommend
-# a lazy-initialized global for capturing expensive things like
-# models, etc.*
-#
-# In this case, we'll prime the memoization at cold-start.
-#
-# * https://cloud.google.com/functions/docs/bestpractices/tips#use_global_variables_to_reuse_objects_in_future_invocations # noqa: 501
-model = get_model()
+def triage(symptoms, specialist):
+    global gemini
+
+    @functools.cache
+    def nurse():
+        with open("nurse.prompt") as nurse:
+            return nurse.read()
+
+    prompt = ChatPromptTemplate.from_messages(
+        [SystemMessagePromptTemplate.from_template(nurse())]
+    )
+
+    return (prompt | gemini).invoke(
+        {"symptoms": symptoms, "specialist": specialist}
+    )
 
 
 @functions_framework.http
@@ -98,12 +164,11 @@ def hello(request):
 
     speech_result = request.form.get("SpeechResult")
 
-    suffix = None
+    greeting = GREETING
 
     if speech_result:
-        suffix = generate(speech_result)
-
-    logging.info(suffix)
+        specialist = find_specialist(speech_result)
+        greeting = triage(speech_result, specialist)
 
     response = VoiceResponse()
     gather = Gather(
@@ -112,7 +177,7 @@ def hello(request):
         speech_model="phone_call",
         barge_in=True,
     )
-    gather.append(say(suffix if suffix else GREETING))
+    gather.append(say(greeting))
     response.append(gather)
     response.append(say("Thanks for calling!"))
 
