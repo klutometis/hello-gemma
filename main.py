@@ -77,7 +77,6 @@ def find_specialist(prompt):
 
     class Specialties(Enum):
         INTERNAL_MEDICINE = "Internal Medicine"
-        PEDIATRICS = "Pediatrics"
         ORTHOPEDICS = "Orthopedics"
         CARDIOLOGY = "Cardiology"
         NEUROLOGY = "Neurology"
