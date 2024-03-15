@@ -1,5 +1,9 @@
 # TODO
 
+## Slides
+
+Might as well do Jupyter or reveal?
+
 ## Pre-commit
 
 Some of the flags (like `--profile=black`, etc.); should be put in
