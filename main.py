@@ -1,7 +1,6 @@
 import functools
 import json
 import logging
-import textwrap
 from enum import Enum
 from http import HTTPStatus
 from types import SimpleNamespace
@@ -15,8 +14,9 @@ from langchain.prompts import (
     ChatPromptTemplate,
     FewShotChatMessagePromptTemplate,
     HumanMessagePromptTemplate,
+    SystemMessagePromptTemplate,
 )
-from langchain.schema import AIMessage, SystemMessage
+from langchain.schema import AIMessage
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
 from langchain_google_vertexai import GemmaChatVertexAIModelGarden, VertexAI
 from pyparsing import Literal, SkipTo, StringEnd
@@ -147,17 +147,7 @@ def triage(symptoms, specialist):
             return nurse.read()
 
     prompt = ChatPromptTemplate.from_messages(
-        [
-            SystemMessage(nurse()),
-            HumanMessagePromptTemplate.from_template(
-                textwrap.dedent(
-                    """\
-         Here are my symptoms: {symptoms}
-         Here is the specialist I'd like to see: {specialist}
-         """
-                )
-            ),
-        ]
+        [SystemMessagePromptTemplate.from_template(nurse())]
     )
 
     return (prompt | gemini).invoke(
