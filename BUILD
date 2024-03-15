@@ -22,7 +22,7 @@ py_binary(
         requirement("pyparsing"),
         requirement("twilio"),
     ],
-    data = [":requirements", "params.json"],
+    data = [":requirements", "params.json", "nurse.prompt"],
 )
 
 sh_binary(

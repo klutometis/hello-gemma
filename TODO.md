@@ -1,5 +1,16 @@
 # TODO
 
+## Pre-commit
+
+Some of the flags (like `--profile=black`, etc.); should be put in
+`pyproject.toml`?
+
+## Few-shot
+
+Langchain has an abstraction for
+[few-shot](https://python.langchain.com/docs/modules/model_io/prompts/few_shot_examples_chat),
+by the way.
+
 ## API gateway
 
 See [here](https://cloud.google.com/api-gateway); mechanism to use domains with
