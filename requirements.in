@@ -1,3 +1,4 @@
+bazel-runfiles
 functions-framework
 google-cloud-aiplatform
 langchain

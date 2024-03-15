@@ -6,6 +6,7 @@ from http import HTTPStatus
 from types import SimpleNamespace
 
 import functions_framework
+from langchain.globals import set_debug
 from langchain.output_parsers.enum import EnumOutputParser
 from langchain.output_parsers.fix import OutputFixingParser
 from langchain.prompts import (
@@ -24,7 +25,7 @@ from twilio.twiml.voice_response import Gather, Say, VoiceResponse
 
 @functools.cache
 def get_param(key: str) -> str:
-    with open("params.json", "r") as file:
+    with open("data/params.json", "r") as file:
         return json.load(file)[key]
 
 
@@ -143,7 +144,7 @@ def triage(symptoms, specialist):
 
     @functools.cache
     def nurse():
-        with open("nurse.prompt") as nurse:
+        with open("data/nurse.prompt") as nurse:
             return nurse.read()
 
     prompt = ChatPromptTemplate.from_messages(
@@ -157,10 +158,12 @@ def triage(symptoms, specialist):
 
 @functions_framework.http
 def hello(request):
-    GREETING = "Hi, I'm Gemma! How can I help you today?"
+    GREETING = "Hi, I'm Gemma; your triage nurse! How are you feeling today?"
     HEADERS = {"Content-Type": "text/xml"}
 
-    logging.info(request.form.to_dict())
+    set_debug(True)
+
+    logging.info(f"{request.form.to_dict()=}")
 
     speech_result = request.form.get("SpeechResult")
 
@@ -168,7 +171,9 @@ def hello(request):
 
     if speech_result:
         specialist = find_specialist(speech_result)
+        logging.info(f"{specialist=}")
         greeting = triage(speech_result, specialist)
+        logging.info(f"{greeting=}")
 
     response = VoiceResponse()
     gather = Gather(

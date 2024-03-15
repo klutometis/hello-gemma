@@ -6,6 +6,12 @@
 . external/shflags/shflags
 
 function main() {
+    dir=$(mktemp -d)
+
+    cp -frv main.py requirements.txt data "${dir}"
+
+    cd "${dir}"
+
     gcloud functions deploy hello-gemma \
            --gen2 \
            --runtime=python312 \
@@ -13,7 +19,18 @@ function main() {
            --source=. \
            --entry-point=hello \
            --trigger-http \
-           --allow-unauthenticated
+           --allow-unauthenticated \
+           --cpu=1 \
+           --memory=2048M \
+           --verbosity=debug
+
+    # gcloud run deploy hello-gemma \
+    #        --region=us-west1 \
+    #        --source=. \
+    #        --allow-unauthenticated \
+    #        --cpu=1 \
+    #        --memory=2048M \
+    #        --verbosity=debug
 }
 
 # Fail early.

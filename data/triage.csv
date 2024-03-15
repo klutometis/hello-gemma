@@ -1,0 +1,651 @@
+Specialty,Symptoms
+Internal Medicine,Chronic cough
+Internal Medicine,Unexplained weight loss
+Internal Medicine,Fatigue
+Internal Medicine,Fever
+Internal Medicine,Shortness of breath
+Internal Medicine,High blood pressure
+Internal Medicine,Diabetes management
+Internal Medicine,Hyperlipidemia
+Internal Medicine,Asthma management
+Internal Medicine,Allergic reactions
+Internal Medicine,Arthritis pain
+Internal Medicine,Anemia
+Internal Medicine,Thyroid disorders
+Internal Medicine,Acid reflux
+Internal Medicine,Peptic ulcer disease
+Internal Medicine,Chronic kidney disease management
+Internal Medicine,Liver disease management
+Internal Medicine,Heart disease management
+Internal Medicine,Stroke prevention
+Internal Medicine,COPD management
+Internal Medicine,Urinary tract infections
+Internal Medicine,Gout management
+Internal Medicine,Osteoporosis management
+Internal Medicine,Rheumatoid arthritis management
+Internal Medicine,Inflammatory bowel disease management
+Internal Medicine,Sleep disorders
+Internal Medicine,Depression and anxiety management
+Internal Medicine,Hepatitis management
+Internal Medicine,HIV/AIDS management
+Internal Medicine,Pneumonia
+Internal Medicine,Tuberculosis
+Internal Medicine,Sexually transmitted infections
+Internal Medicine,Migraine management
+Internal Medicine,Nutritional deficiencies
+Internal Medicine,Obesity management
+Internal Medicine,Skin infections
+Internal Medicine,Fungal infections
+Internal Medicine,Geriatric health issues
+Internal Medicine,Vaccinations
+Internal Medicine,Preventive healthcare
+Internal Medicine,Sepsis management
+Internal Medicine,Electrolyte imbalances
+Internal Medicine,Dehydration
+Internal Medicine,Substance abuse management
+Internal Medicine,Dementia management
+Internal Medicine,Cholesterol management
+Internal Medicine,Blood clotting disorders
+Internal Medicine,Varicose veins
+Internal Medicine,Peripheral artery disease
+Internal Medicine,Men's health issues
+Pediatrics,Fever in children
+Pediatrics,Common cold
+Pediatrics,Ear infections
+Pediatrics,Strep throat
+Pediatrics,Asthma attacks
+Pediatrics,Eczema
+Pediatrics,Diaper rash
+Pediatrics,Chickenpox
+Pediatrics,Measles
+Pediatrics,Mumps
+Pediatrics,Rubella
+Pediatrics,Whooping cough
+Pediatrics,Scarlet fever
+Pediatrics,"Hand, foot, and mouth disease"
+Pediatrics,Fifth disease
+Pediatrics,Roseola
+Pediatrics,Teething pain
+Pediatrics,Colic
+Pediatrics,Growth delays
+Pediatrics,Developmental disorders
+Pediatrics,Autism spectrum disorders
+Pediatrics,Attention deficit hyperactivity disorder (ADHD)
+Pediatrics,Learning disabilities
+Pediatrics,Childhood obesity
+Pediatrics,Nutritional deficiencies
+Pediatrics,Dehydration
+Pediatrics,Sports injuries
+Pediatrics,Fractures
+Pediatrics,Concussions
+Pediatrics,Juvenile diabetes
+Pediatrics,Juvenile arthritis
+Pediatrics,Allergic reactions
+Pediatrics,Food allergies
+Pediatrics,Anemia
+Pediatrics,Childhood vaccinations
+Pediatrics,Sudden infant death syndrome (SIDS) prevention
+Pediatrics,Infant and toddler safety
+Pediatrics,Breastfeeding issues
+Pediatrics,Pediatric cancer
+Pediatrics,Cystic fibrosis
+Pediatrics,Sickle cell disease
+Pediatrics,Congenital heart disease
+Pediatrics,Pediatric HIV/AIDS
+Pediatrics,Tuberculosis in children
+Pediatrics,Infectious mononucleosis
+Pediatrics,Pediatric mental health
+Pediatrics,Bullying and peer pressure
+Pediatrics,Sleep disorders in children
+Pediatrics,Pediatric endocrinology disorders
+Pediatrics,Vision and hearing screening
+Orthopedics,Joint pain
+Orthopedics,Muscle pain
+Orthopedics,Back pain
+Orthopedics,Neck pain
+Orthopedics,Fractures
+Orthopedics,Sprains and strains
+Orthopedics,Dislocations
+Orthopedics,Arthritis
+Orthopedics,Osteoporosis
+Orthopedics,Sports injuries
+Orthopedics,Tendonitis
+Orthopedics,Bursitis
+Orthopedics,Carpal tunnel syndrome
+Orthopedics,Rotator cuff injuries
+Orthopedics,Meniscus tears
+Orthopedics,Anterior cruciate ligament (ACL) injuries
+Orthopedics,Shin splints
+Orthopedics,Plantar fasciitis
+Orthopedics,Scoliosis
+Orthopedics,Herniated discs
+Orthopedics,Sciatica
+Orthopedics,Spinal stenosis
+Orthopedics,Kyphosis
+Orthopedics,Lordosis
+Orthopedics,Bone tumors
+Orthopedics,Osteomyelitis (bone infection)
+Orthopedics,Rickets
+Orthopedics,Paget's disease of bone
+Orthopedics,Dupuytren's contracture
+Orthopedics,Ganglion cysts
+Orthopedics,Bone spurs
+Orthopedics,Hammer toe
+Orthopedics,Bunions
+Orthopedics,Achilles tendon rupture
+Orthopedics,Ankle instability
+Orthopedics,Pediatric fractures
+Orthopedics,Congenital musculoskeletal defects
+Orthopedics,Hip dysplasia
+Orthopedics,Leg length discrepancy
+Orthopedics,Flat feet
+Orthopedics,Gout
+Orthopedics,Fibromyalgia
+Orthopedics,Lupus
+Orthopedics,Rheumatoid arthritis
+Orthopedics,Osteoarthritis of the knee
+Orthopedics,Osteoarthritis of the hip
+Orthopedics,Frozen shoulder
+Orthopedics,Impingement syndrome
+Orthopedics,Stress fractures
+Orthopedics,Peripheral neuropathy
+Cardiology,Chest pain
+Cardiology,Shortness of breath
+Cardiology,Palpitations
+Cardiology,Dizziness
+Cardiology,Fainting spells
+Cardiology,High blood pressure
+Cardiology,Low blood pressure
+Cardiology,Swelling of legs
+Cardiology,Fatigue
+Cardiology,Irregular heartbeat
+Cardiology,Heart murmurs
+Cardiology,Cyanosis (bluish coloration of the skin)
+Cardiology,Cold extremities
+Cardiology,Night sweats
+Cardiology,Weight gain
+Cardiology,Reduced ability to exercise
+Cardiology,Swelling of abdomen
+Cardiology,Cough
+Cardiology,Wheezing
+Cardiology,Heartburn
+Cardiology,Angina
+Cardiology,Myocardial infarction symptoms
+Cardiology,Heart failure symptoms
+Cardiology,Peripheral artery disease symptoms
+Cardiology,Stroke symptoms
+Cardiology,Aortic aneurysm symptoms
+Cardiology,Deep vein thrombosis symptoms
+Cardiology,Varicose veins
+Cardiology,Pulmonary embolism symptoms
+Cardiology,Arrhythmia symptoms
+Cardiology,Congenital heart defect symptoms in adults
+Cardiology,Congenital heart defect symptoms in children
+Cardiology,Rheumatic heart disease symptoms
+Cardiology,Cardiomyopathy symptoms
+Cardiology,Pericarditis symptoms
+Cardiology,Endocarditis symptoms
+Cardiology,Mitral valve prolapse symptoms
+Cardiology,Atrial fibrillation symptoms
+Cardiology,Heart block symptoms
+Cardiology,Ventricular tachycardia symptoms
+Cardiology,Bradycardia symptoms
+Cardiology,Tachycardia symptoms
+Cardiology,Hypertrophic cardiomyopathy symptoms
+Cardiology,Dilated cardiomyopathy symptoms
+Cardiology,Restrictive cardiomyopathy symptoms
+Cardiology,Coronary artery disease symptoms
+Cardiology,Heart valve disease symptoms
+Cardiology,Cardiac arrest symptoms
+Cardiology,High cholesterol symptoms
+Cardiology,Thrombophlebitis symptoms
+Neurology,Headaches
+Neurology,Migraines
+Neurology,Dizziness
+Neurology,Vertigo
+Neurology,Seizures
+Neurology,Epilepsy
+Neurology,Memory loss
+Neurology,Confusion
+Neurology,Cognitive impairment
+Neurology,Alzheimer's disease symptoms
+Neurology,Parkinson's disease symptoms
+Neurology,Multiple sclerosis symptoms
+Neurology,Muscle weakness
+Neurology,Muscle spasms
+Neurology,Tremors
+Neurology,Loss of sensation
+Neurology,Numbness and tingling
+Neurology,Neuropathic pain
+Neurology,Stroke symptoms
+Neurology,Transient ischemic attack (TIA) symptoms
+Neurology,Brain tumors symptoms
+Neurology,Brain injury symptoms
+Neurology,Concussion symptoms
+Neurology,Bell's palsy
+Neurology,Guillain-Barre syndrome symptoms
+Neurology,Amyotrophic lateral sclerosis (ALS) symptoms
+Neurology,Huntington's disease symptoms
+Neurology,Dystonia
+Neurology,Restless legs syndrome
+Neurology,Sleep disorders
+Neurology,Narcolepsy
+Neurology,Sleep apnea
+Neurology,Insomnia
+Neurology,Sleep paralysis
+Neurology,Sleepwalking
+Neurology,Autonomic dysfunction
+Neurology,Postural orthostatic tachycardia syndrome (POTS) symptoms
+Neurology,Cerebral palsy symptoms
+Neurology,Spinal cord injury symptoms
+Neurology,Spina bifida symptoms
+Neurology,Meningitis symptoms
+Neurology,Encephalitis symptoms
+Neurology,Peripheral neuropathy
+Neurology,Myasthenia gravis symptoms
+Neurology,Neurofibromatosis symptoms
+Neurology,Carpal tunnel syndrome
+Neurology,Radiculopathy
+Neurology,Sciatica
+Neurology,Trigeminal neuralgia
+Neurology,Cluster headaches
+Dentistry,Toothache or dental pain
+Dentistry,Sensitivity to hot and cold temperatures
+Dentistry,Bleeding or sore gums
+Dentistry,Swollen gums
+Dentistry,Receding gums
+Dentistry,Persistent bad breath (halitosis)
+Dentistry,Dry mouth (xerostomia)
+Dentistry,Sores or ulcers in the mouth that don't heal
+Dentistry,Cracked, chipped, or broken teeth
+Dentistry,Loose teeth
+Dentistry,Discoloration or dark spots on teeth
+Dentistry,Pain when biting or chewing
+Dentistry,Swelling in the face or cheek
+Dentistry,Jaw pain or TMJ discomfort
+Dentistry,Clicking or popping sounds in the jaw
+Dentistry,Burning sensation in the mouth
+Dentistry,Pain or discomfort with orthodontic appliances (braces, retainers)
+Dentistry,Difficulty swallowing
+Dentistry,Excessive teeth grinding or clenching (bruxism)
+Dentistry,Erosion of tooth enamel
+Dentistry,Frequent cavities or tooth decay
+Dentistry,Gum disease (gingivitis or periodontitis)
+Dentistry,Wisdom teeth pain or discomfort
+Dentistry,Changes in the alignment of teeth
+Dentistry,Unexplained headache or earache
+Dentistry,Numbness in the mouth or face
+Dentistry,Tasting a metallic taste
+Dentistry,Nighttime snoring or sleep apnea symptoms
+Dentistry,Sudden sensitivity to sweet foods
+Dentistry,Increased plaque or tartar buildup
+Dentistry,Gum recession exposing tooth roots
+Dentistry,Cold sores or fever blisters around the mouth
+Dentistry,Canker sores inside the mouth
+Dentistry,White patches, red patches, or spots in the mouth
+Dentistry,Lumps or thickening tissues inside the mouth
+Dentistry,Difficulty opening the mouth wide
+Dentistry,Changes in bite or occlusion
+Dentistry,Loss of a dental filling or crown
+Dentistry,Food getting stuck between certain teeth frequently
+Dentistry,Noticeable thinning or flattening of teeth
+Dentistry,Change in the color of gums
+Dentistry,Voice changes due to oral health issues
+Dentistry,Sudden difficulty with dentures fitting properly
+Dentistry,Bleeding while brushing or flossing
+Dentistry,Pain or pressure in the sinus area
+Dentistry,Neck swelling or lymph node swelling
+Dentistry,Changes in taste sensation
+Dentistry,Feeling of grittiness or sand in the mouth
+Dentistry,Changes in the way the teeth fit together
+Dentistry,Airway blockages or breathing difficulties related to oral structures
+Gastroenterology,Abdominal pain or discomfort
+Gastroenterology,Chronic or recurrent diarrhea
+Gastroenterology,Persistent constipation
+Gastroenterology,Changes in bowel habits
+Gastroenterology,Blood in stool
+Gastroenterology,Black, tarry stools
+Gastroenterology,Acid reflux or heartburn
+Gastroenterology,Difficulty swallowing (dysphagia)
+Gastroenterology,Nausea or vomiting
+Gastroenterology,Vomiting blood
+Gastroenterology,Unexplained weight loss
+Gastroenterology,Excessive bloating or gas
+Gastroenterology,Jaundice (yellowing of the skin and eyes)
+Gastroenterology,Abdominal swelling (ascites)
+Gastroenterology,Loss of appetite
+Gastroenterology,Indigestion
+Gastroenterology,Peptic ulcer symptoms (stomach or duodenal ulcers)
+Gastroenterology,Lactose intolerance symptoms
+Gastroenterology,Gluten sensitivity or celiac disease symptoms
+Gastroenterology,Inflammatory bowel disease (Crohn's disease or ulcerative colitis) symptoms
+Gastroenterology,Irritable bowel syndrome (IBS) symptoms
+Gastroenterology,Gallstones symptoms
+Gastroenterology,Hepatitis symptoms
+Gastroenterology,Liver cirrhosis symptoms
+Gastroenterology,Pancreatitis symptoms
+Gastroenterology,Cholecystitis (gallbladder inflammation) symptoms
+Gastroenterology,Gastroesophageal reflux disease (GERD) symptoms
+Gastroenterology,Hemorrhoids symptoms
+Gastroenterology,Anal fissures symptoms
+Gastroenterology,Diverticulitis symptoms
+Gastroenterology,Colorectal cancer symptoms
+Gastroenterology,Esophageal varices symptoms
+Gastroenterology,Pancreatic cancer symptoms
+Gastroenterology,H. pylori infection symptoms
+Gastroenterology,Fatty liver disease (NAFLD or NASH) symptoms
+Gastroenterology,Food poisoning symptoms
+Gastroenterology,Gastrointestinal bleeding symptoms
+Gastroenterology,Abdominal hernias symptoms
+Gastroenterology,Gastroenteritis symptoms
+Gastroenterology,Barrett's esophagus symptoms
+Gastroenterology,Gastroparesis symptoms
+Gastroenterology,Esophagitis symptoms
+Gastroenterology,Biliary tract disorders symptoms
+Gastroenterology,Zollinger-Ellison syndrome symptoms
+Gastroenterology,Anorectal abscess symptoms
+Gastroenterology,Pyloric stenosis symptoms
+Gastroenterology,Whipple's disease symptoms
+Gastroenterology,Intestinal ischemia symptoms
+Gastroenterology,Malabsorption syndrome symptoms
+Gastroenterology,Intestinal obstruction symptoms
+Dermatology,Persistent acne or cystic acne
+Dermatology,Skin rashes or irritation
+Dermatology,Eczema (atopic dermatitis) flare-ups
+Dermatology,Psoriasis patches
+Dermatology,Unusual moles or skin growths
+Dermatology,Changes in mole size, shape, or color
+Dermatology,Persistent itchiness
+Dermatology,Dry, scaly skin
+Dermatology,Skin redness or inflammation
+Dermatology,Blistering skin conditions
+Dermatology,Skin infections (bacterial, viral, fungal)
+Dermatology,Hair loss or scalp disorders
+Dermatology,Nail disorders (fungus, discoloration, abnormal growth)
+Dermatology,Sunburn or sun damage
+Dermatology,Skin cancer screening
+Dermatology,Rosacea flare-ups
+Dermatology,Hives (urticaria)
+Dermatology,Cold sores (herpes simplex virus)
+Dermatology,Warts (including genital warts)
+Dermatology,Vitiligo (loss of skin pigment)
+Dermatology,Excessive sweating (hyperhidrosis)
+Dermatology,Scars or keloids
+Dermatology,Stretch marks (striae)
+Dermatology,Spider veins or varicose veins
+Dermatology,Melasma (dark patches on the skin)
+Dermatology,Contact dermatitis (allergic or irritant)
+Dermatology,Seborrheic dermatitis (including dandruff)
+Dermatology,Impetigo
+Dermatology,Shingles (herpes zoster)
+Dermatology,Lichen planus
+Dermatology,Lupus skin manifestations
+Dermatology,Scleroderma skin symptoms
+Dermatology,Cellulitis
+Dermatology,Poison ivy, oak, or sumac reactions
+Dermatology,Bed sores (pressure ulcers)
+Dermatology,Diabetic ulcers
+Dermatology,Pityriasis rosea
+Dermatology,Ringworm (tinea infections)
+Dermatology,Scabies infestation
+Dermatology,Skin tags or seborrheic keratoses
+Dermatology,Actinic keratosis (precancerous skin lesions)
+Dermatology,Angiomas (benign vascular lesions)
+Dermatology,Bullous pemphigoid
+Dermatology,Cutaneous sarcoidosis
+Dermatology,Dermatomyositis skin symptoms
+Dermatology,Granuloma annulare
+Dermatology,Kaposi's sarcoma (in HIV/AIDS patients)
+Dermatology,Lichen sclerosus
+Dermatology,Morphea (localized scleroderma)
+Dermatology,Pyoderma gangrenosum
+OB/GYN,Missed periods or irregular menstrual cycles
+OB/GYN,Heavy or prolonged menstrual bleeding (menorrhagia)
+OB/GYN,Painful periods (dysmenorrhea)
+OB/GYN,Pelvic pain outside of menstruation
+OB/GYN,Pain during intercourse (dyspareunia)
+OB/GYN,Unusual vaginal discharge
+OB/GYN,Itching, burning, or irritation in the genital area
+OB/GYN,Vaginal dryness
+OB/GYN,Symptoms of vaginal infections (yeast, bacterial vaginosis)
+OB/GYN,Symptoms of sexually transmitted infections (STIs)
+OB/GYN,Abnormal Pap smear results
+OB/GYN,Human papillomavirus (HPV) symptoms
+OB/GYN,Endometriosis symptoms
+OB/GYN,Polycystic ovary syndrome (PCOS) symptoms
+OB/GYN,Uterine fibroids symptoms
+OB/GYN,Ovarian cysts symptoms
+OB/GYN,Pelvic inflammatory disease (PID) symptoms
+OB/GYN,Menopause symptoms (hot flashes, night sweats)
+OB/GYN,Premenstrual syndrome (PMS) and premenstrual dysphoric disorder (PMDD) symptoms
+OB/GYN,Breast pain or lumps
+OB/GYN,Nipple discharge
+OB/GYN,Changes in breast size or shape
+OB/GYN,Skin changes on breasts or nipples
+OB/GYN,Urinary incontinence
+OB/GYN,Frequent urinary tract infections (UTIs)
+OB/GYN,Fertility concerns or difficulty conceiving
+OB/GYN,Concerns related to contraception (birth control) use
+OB/GYN,Pregnancy confirmation and prenatal care
+OB/GYN,Bleeding during pregnancy
+OB/GYN,High-risk pregnancy management
+OB/GYN,Miscarriage or recurrent pregnancy loss
+OB/GYN,Ectopic pregnancy symptoms
+OB/GYN,Gestational diabetes management
+OB/GYN,Preeclampsia symptoms
+OB/GYN,Labor and delivery questions
+OB/GYN,Postpartum depression symptoms
+OB/GYN,Issues with menstrual recovery postpartum
+OB/GYN,Menstrual changes after childbirth
+OB/GYN,Questions about breastfeeding or lactation issues
+OB/GYN,Postmenopausal bleeding
+OB/GYN,Hormone replacement therapy (HRT) considerations
+OB/GYN,Pelvic floor dysfunction
+OB/GYN,Vulvodynia or chronic vulvar pain
+OB/GYN,Genital prolapse symptoms (e.g., uterine prolapse)
+OB/GYN,Abnormal sexual development or puberty concerns
+OB/GYN,Gender dysphoria and gender-affirming care
+OB/GYN,Gynecological cancer screening (ovarian, uterine, cervical, vulvar)
+OB/GYN,Preventive health and wellness exams
+OB/GYN,Family planning and reproductive life planning
+OB/GYN,Sexual health counseling and education
+Psychiatry,Persistent feelings of sadness or depression
+Psychiatry,Excessive worry or anxiety
+Psychiatry,Panic attacks
+Psychiatry,Phobias or irrational fears
+Psychiatry,Obsessive-compulsive behaviors or thoughts
+Psychiatry,Mood swings or sudden emotional changes
+Psychiatry,Difficulty managing anger or aggression
+Psychiatry,Suicidal thoughts or behaviors
+Psychiatry,Self-harming behaviors
+Psychiatry,Eating disorders (anorexia, bulimia, binge eating)
+Psychiatry,Substance abuse or addiction
+Psychiatry,Insomnia or significant changes in sleep patterns
+Psychiatry,Excessive fatigue or lack of energy
+Psychiatry,Difficulty concentrating or memory problems
+Psychiatry,Feelings of worthlessness or guilt
+Psychiatry,Withdrawal from social interactions
+Psychiatry,Loss of interest in previously enjoyed activities
+Psychiatry,Hallucinations or delusions
+Psychiatry,Paranoia or distrust of others
+Psychiatry,Disorganized thinking or speech
+Psychiatry,Significant personality changes
+Psychiatry,Unexplained physical ailments with no apparent cause
+Psychiatry,Experiencing trauma or having flashbacks
+Psychiatry,Post-traumatic stress disorder (PTSD) symptoms
+Psychiatry,Adjustment disorder symptoms
+Psychiatry,Bipolar disorder symptoms (manic or depressive episodes)
+Psychiatry,Schizophrenia symptoms
+Psychiatry,Schizoaffective disorder symptoms
+Psychiatry,Borderline personality disorder symptoms
+Psychiatry,Antisocial personality disorder symptoms
+Psychiatry,Narcissistic personality disorder symptoms
+Psychiatry,Avoidant personality disorder symptoms
+Psychiatry,Obsessive-compulsive personality disorder symptoms
+Psychiatry,Dependent personality disorder symptoms
+Psychiatry,Histrionic personality disorder symptoms
+Psychiatry,Issues with sexual function or libido
+Psychiatry,Gender dysphoria
+Psychiatry,Attention deficit hyperactivity disorder (ADHD) symptoms
+Psychiatry,Autism spectrum disorder (ASD) symptoms
+Psychiatry,Intellectual disability assessment and support
+Psychiatry,Dementia (e.g., Alzheimer's disease) symptoms
+Psychiatry,Delirium or acute confusional state
+Psychiatry,Chronic pain management with a psychological component
+Psychiatry,Somatoform disorders (physical symptoms with no clear medical cause)
+Psychiatry,Conversion disorder (functional neurological symptom disorder)
+Psychiatry,Dissociative disorders (including dissociative identity disorder)
+Psychiatry,Impulse control disorders
+Psychiatry,Problematic internet or gaming use
+Psychiatry,Sleep disorders related to mental health
+Psychiatry,Relationship problems or family conflict with a psychological basis
+Emergency Medicine,Chest pain suggestive of a heart attack
+Emergency Medicine,Severe difficulty breathing or shortness of breath
+Emergency Medicine,Severe allergic reactions (anaphylaxis)
+Emergency Medicine,Sudden severe headache or migraine with unusual symptoms
+Emergency Medicine,High fever with a stiff neck, suggesting meningitis
+Emergency Medicine,Severe abdominal pain
+Emergency Medicine,Profuse bleeding or bleeding that won't stop
+Emergency Medicine,Deep cuts or wounds with visible muscle or bone
+Emergency Medicine,Severe burns
+Emergency Medicine,Acute mental health crises (e.g., suicidal thoughts, severe psychosis)
+Emergency Medicine,Sudden paralysis or weakness, indicative of a stroke
+Emergency Medicine,Poisoning or suspected overdose
+Emergency Medicine,Severe or persistent vomiting or diarrhea
+Emergency Medicine,Dehydration symptoms, especially in infants and elderly
+Emergency Medicine,Seizures, especially if prolonged or in someone without a known seizure disorder
+Emergency Medicine,Sudden vision loss or significant eye injuries
+Emergency Medicine,Major fractures or suspected broken bones
+Emergency Medicine,Head injuries with loss of consciousness, confusion, or vomiting
+Emergency Medicine,Severe or rapidly worsening infections
+Emergency Medicine,Pregnancy-related emergencies (e.g., severe preeclampsia, eclampsia, bleeding)
+Emergency Medicine,Sudden and severe dizziness, weakness, or loss of coordination
+Emergency Medicine,High fever with rash, especially if the rash is purplish and doesn't fade when pressed
+Emergency Medicine,Electric shock or lightning strike
+Emergency Medicine,Near-drowning experiences
+Emergency Medicine,Severe hypothermia or frostbite
+Emergency Medicine,Heatstroke or severe heat exhaustion
+Emergency Medicine,Sudden severe pain anywhere in the body
+Emergency Medicine,Uncontrollable agitation or aggression
+Emergency Medicine,Carbon monoxide poisoning symptoms
+Emergency Medicine,Acute kidney stones with severe pain
+Emergency Medicine,Testicular torsion presenting with acute scrotal pain
+Emergency Medicine,Severe asthma attacks not responding to usual medication
+Emergency Medicine,Flank pain with fever, suggesting pyelonephritis
+Emergency Medicine,Appendicitis symptoms, such as right lower quadrant abdominal pain
+Emergency Medicine,Ectopic pregnancy with acute abdominal pain and bleeding
+Emergency Medicine,Sudden swelling or pain in the leg indicative of deep vein thrombosis (DVT)
+Emergency Medicine,Severe animal bites or human bites
+Emergency Medicine,Symptoms of septic shock, such as high or very low temperature, rapid heart rate, rapid breathing
+Emergency Medicine,Acute pancreatitis with severe upper abdominal pain radiating to the back
+Emergency Medicine,Ruptured ovarian cyst with acute abdominal pain
+Emergency Medicine,Acute gallbladder attack with severe right upper quadrant abdominal pain
+Emergency Medicine,Inhalation injuries from smoke or toxic fumes
+Emergency Medicine,Acute cellulitis with rapidly spreading redness
+Emergency Medicine,Acute psychotic episodes with delusions or hallucinations
+Emergency Medicine,Severe dehydration from gastroenteritis, especially in children and the elderly
+Emergency Medicine,Complications from diabetes, such as diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS)
+Emergency Medicine,Acute urinary retention with inability to urinate
+Emergency Medicine,Severe pelvic inflammatory disease (PID) with acute abdominal pain
+Emergency Medicine,Compartment syndrome with severe pain, swelling, and decreased limb function
+Emergency Medicine,Foreign body aspiration or ingestion causing distress
+Ophthalmology,Blurry vision or sudden vision changes
+Ophthalmology,Persistent eye pain or discomfort
+Ophthalmology,Red eyes or bloodshot appearance
+Ophthalmology,Sensitivity to light (photophobia)
+Ophthalmology,Double vision (diplopia)
+Ophthalmology,Flashing lights, floaters, or a shadow in your field of vision
+Ophthalmology,Sudden loss of vision in one or both eyes
+Ophthalmology,Eye injuries or trauma
+Ophthalmology,Eyelid abnormalities (e.g., drooping eyelid, eyelid lumps)
+Ophthalmology,Dry eyes or excessive tearing
+Ophthalmology,Itchy eyes indicating allergies
+Ophthalmology,Discharge from the eyes
+Ophthalmology,Burning sensation in the eyes
+Ophthalmology,Frequent headaches or eye strain
+Ophthalmology,Difficulty seeing at night
+Ophthalmology,Seeing halos around lights
+Ophthalmology,Unequal pupil sizes
+Ophthalmology,Swelling around the eyes
+Ophthalmology,Color vision changes or difficulty
+Ophthalmology,Squinting or closing one eye to read or see clearly
+Ophthalmology,Crossed eyes (strabismus) or misalignment
+Ophthalmology,Eye fatigue, especially after reading or computer use
+Ophthalmology,Changes in the appearance of the iris
+Ophthalmology,Corneal abrasion (scratch)
+Ophthalmology,Stye or chalazion on the eyelid
+Ophthalmology,Keratitis (inflammation of the cornea)
+Ophthalmology,Conjunctivitis (pink eye), infectious or allergic
+Ophthalmology,Glaucoma symptoms, such as peripheral vision loss
+Ophthalmology,Cataracts development, leading to cloudy vision
+Ophthalmology,Age-related macular degeneration (AMD) symptoms
+Ophthalmology,Diabetic retinopathy in patients with diabetes
+Ophthalmology,Retinal detachment warning signs
+Ophthalmology,Uveitis (inflammation of the middle layer of the eye)
+Ophthalmology,Optic neuritis (inflammation of the optic nerve)
+Ophthalmology,Papilledema (swelling of the optic disc)
+Ophthalmology,Orbital cellulitis (infection of the tissues around the eye)
+Ophthalmology,Thyroid eye disease (Graves' orbitopathy)
+Ophthalmology,Eye symptoms related to autoimmune diseases
+Ophthalmology,Contact lens-related problems
+Ophthalmology,Pterygium (growth on the conjunctiva)
+Ophthalmology,Presbyopia, difficulty focusing on close objects with age
+Ophthalmology,Visual field defects
+Ophthalmology,Night blindness
+Ophthalmology,Ocular migraines or visual auras
+Ophthalmology,Dry eye syndrome management
+Ophthalmology,Computer vision syndrome
+Ophthalmology,Blepharitis (inflammation of the eyelids)
+Ophthalmology,Amblyopia (lazy eye) management
+Ophthalmology,Retinitis pigmentosa, a group of genetic eye conditions
+Ophthalmology,Childhood vision screenings and eye health checks
+Otolaryngology (ENT),Hearing loss or impairment
+Otolaryngology (ENT),Persistent ear pain or earaches
+Otolaryngology (ENT),Ringing in the ears (tinnitus)
+Otolaryngology (ENT),Dizziness or problems with balance (vertigo)
+Otolaryngology (ENT),Ear infections (otitis media or otitis externa)
+Otolaryngology (ENT),Discharge or bleeding from the ear
+Otolaryngology (ENT),Nasal congestion or blockage
+Otolaryngology (ENT),Recurrent sinus infections (sinusitis)
+Otolaryngology (ENT),Nosebleeds (epistaxis)
+Otolaryngology (ENT),Loss of smell (anosmia)
+Otolaryngology (ENT),Nasal polyps
+Otolaryngology (ENT),Snoring and sleep apnea
+Otolaryngology (ENT),Sore throats or recurrent tonsillitis
+Otolaryngology (ENT),Hoarseness or voice changes
+Otolaryngology (ENT),Swallowing difficulties (dysphagia)
+Otolaryngology (ENT),Throat pain or discomfort
+Otolaryngology (ENT),Thyroid nodules or irregularities
+Otolaryngology (ENT),Salivary gland infections or stones
+Otolaryngology (ENT),Neck lumps or bumps
+Otolaryngology (ENT),Facial pain or pressure
+Otolaryngology (ENT),Chronic cough
+Otolaryngology (ENT),Allergic symptoms affecting the nose and throat
+Otolaryngology (ENT),Deviated septum symptoms
+Otolaryngology (ENT),Turbinate hypertrophy
+Otolaryngology (ENT),Tonsil stones (tonsilloliths)
+Otolaryngology (ENT),Vocal cord nodules, polyps, or cysts
+Otolaryngology (ENT),Laryngitis (voice box inflammation)
+Otolaryngology (ENT),TMJ disorders affecting the jaw
+Otolaryngology (ENT),Swimmer's ear (external otitis)
+Otolaryngology (ENT),Foreign bodies in the ear, nose, or throat
+Otolaryngology (ENT),Head and neck cancer screenings
+Otolaryngology (ENT),Tinnitus management
+Otolaryngology (ENT),Meniere's disease symptoms
+Otolaryngology (ENT),Eustachian tube dysfunction
+Otolaryngology (ENT),Adenoid problems or enlargement
+Otolaryngology (ENT),Pharyngitis (throat inflammation)
+Otolaryngology (ENT),Laryngopharyngeal reflux (LPR)
+Otolaryngology (ENT),Otitis media with effusion (glue ear)
+Otolaryngology (ENT),Acoustic neuroma symptoms
+Otolaryngology (ENT),Cleft lip and palate concerns
+Otolaryngology (ENT),Airway problems (stridor, breathing difficulties)
+Otolaryngology (ENT),Zenker's diverticulum
+Otolaryngology (ENT),Peritonsillar abscess
+Otolaryngology (ENT),Chronic rhinosinusitis with or without polyps
+Otolaryngology (ENT),Parotid gland tumors
+Otolaryngology (ENT),Thyroglossal duct cysts
+Otolaryngology (ENT),Branchial cleft cysts
+Otolaryngology (ENT),Vocal cord paralysis
+Otolaryngology (ENT),Sialadenitis (inflammation of a salivary gland)
+Otolaryngology (ENT),Otosclerosis (abnormal bone growth in the ear)

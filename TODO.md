@@ -1,5 +1,34 @@
 # TODO
 
+## Credentials
+
+https://stackoverflow.com/questions/69843556/how-do-i-get-access-token-inside-node-js-google-cloud-function/69895524#69895524
+
+## Docker
+
+Deploy
+[functions over buildpack](https://cloud.google.com/docs/buildpacks/build-function).
+
+## Runfiles
+
+For Bash, at least:
+
+```build
+sh_binary(name = "call", srcs = ["call.sh"], deps = [
+    "@bazel_tools//tools/bash/runfiles",
+], data = ["//:main"])
+```
+
+```sh
+. external/bazel_tools/tools/bash/runfiles/runfiles.bash
+runfiles_export_envvars
+runfiles_current_repository
+```
+
+Most of the time, relative should work, though. For Python, there exists
+[`bazel-runfiles`](https://pypi.org/project/bazel-runfiles/), but conflicts with
+our PyPi flow.
+
 ## Slides
 
 Might as well do Jupyter or reveal?

@@ -5,6 +5,7 @@ function main() {
     . ./venv/bin/activate
     pip install -r requirements.txt
     functions-framework --target=hello --debug
+    # ./main
 }
 
 # Fail early.

@@ -1,1 +1,1 @@
-params.json filter=git-crypt diff=git-crypt
+data/params.json filter=git-crypt diff=git-crypt
