@@ -1,0 +1,15 @@
+digraph G {
+	graph [layout=circo,
+		rankdir=LR
+	];
+	caller	[label=Caller,
+		shape=plaintext];
+	twilio	[label=Twilio];
+	caller -> twilio;
+	twilio -> caller;
+	gemma	[label=Gemma];
+	twilio -> gemma;
+	gemini	[label=Gemini];
+	gemma -> gemini;
+	gemini -> twilio;
+}
