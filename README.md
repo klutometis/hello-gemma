@@ -11,6 +11,19 @@ and attempt to answer questions like:
 
 https://github.com/klutometis/hello-gemma/assets/85991/18505109-0db0-474f-a708-5445d0e9ed84
 
+## Motivation
+
+I wanted to show how baby models like Gemma (at 2B parameters) could be used for
+things like cheap classification tasks without resorting to big guns like
+Gemini; after these small, discrete subproblems are solved with baby models;
+it's time for Gemini to step in for the final response with the appropriate
+bedside-manner, etc.
+
+Baby models and big models collaborate on problems; which preserves the
+attention span of the big models for interesting problems; and also keeps costs
+down, since the big models can be relied on exclusively for communication from
+and to the outside world.
+
 ## Design
 
 See [`main.py`](main.py) for the implementation; in a nutshell, though:
