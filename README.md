@@ -26,11 +26,11 @@ and to the outside world.
 
 ## Design
 
-![Design](./data/design.png)
-
 See [`main.py`](main.py) for the implementation; in a nutshell, though:
 
 1. Twilio picks up the phone and does speech-to-text; then
 2. Calls Gemma to classify symptoms → specialist; then
 3. Gemini takes over for final answer; and finally
 4. Twilio calls Google speech-to-text.
+
+![Design](./data/design.png)
