@@ -26,6 +26,8 @@ and to the outside world.
 
 ## Design
 
+![Design](./data/design.png)
+
 See [`main.py`](main.py) for the implementation; in a nutshell, though:
 
 1. Twilio picks up the phone and does speech-to-text; then
